@@ -20,6 +20,9 @@ export default async function handler(req, res) {
   try {
     const fetchResponse = await fetch(GOOGLE_SCRIPT_URL, {
       method: req.method,
+      headers: {
+        "Content-Type": "application/json"
+      },
       // Vercel JSON body ko parse kar deta hai, is liye dobara stringify karte hain
       body: req.method === "POST" ? (typeof req.body === 'string' ? req.body : JSON.stringify(req.body)) : undefined,
     });
